@@ -15,7 +15,7 @@ def encrypt(plaintext, block_size, oracle, verbose=True):
         verbose (bool): Verbose progress.
 
         Returns:
-            str: The encrypted plaintext.
+            str: The ciphertext.
 
         Raises:
             InvalidBlockSizeError: If the block size does not match the ciphertext.
@@ -63,7 +63,7 @@ def encrypt(plaintext, block_size, oracle, verbose=True):
         __print("----------------------------------------------------", verbose)
         ciphertext = block_ciphertext + ciphertext
     __print("Final results:", verbose)
-    __print("[#] Encrypted value (ASCII): %s" % ciphertext, verbose)
+    __print("[#] Ciphertext: %s" % ciphertext, verbose)
     return ciphertext        
     
 
@@ -80,7 +80,7 @@ def decrypt(ciphertext, block_size, oracle, IV=None, verbose=True):
         verbose (bool): Verbose progress.
 
         Returns:
-            str: The decrypted ciphertext.
+            str: The plaintext.
 
         Raises:
             InvalidBlockSizeError: If the block size does not match the ciphertext.
@@ -126,8 +126,8 @@ def decrypt(ciphertext, block_size, oracle, IV=None, verbose=True):
         __print("----------------------------------------------------", verbose)
         plaintext += block_plaintext
     __print("Final results:", verbose)
-    __print("[#] Decrypted value (ASCII): %s" % plaintext, verbose)
-    __print("[#] Decrypted value (HEX): %s" % binascii.hexlify(plaintext.encode("ascii")).decode("ascii"), verbose)
+    __print("[#] Plaintext (ASCII): %s" % plaintext, verbose)
+    __print("[#] Plaintext (HEX): %s" % binascii.hexlify(plaintext.encode("ascii")).decode("ascii"), verbose)
     return plaintext
 
 def __pad(text, block_size):
