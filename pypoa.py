@@ -21,7 +21,7 @@ def encrypt(plaintext, block_size, oracle, verbose=True):
             InvalidBlockSizeError: If the block size does not match the ciphertext.
             PaddingDeterminationError: If the oracle rejects all bytes.
     """
-    plaintext = __pad(plaintext, block_size)
+    plaintext = pad(plaintext, block_size)
     blocks = __get_blocks(plaintext, block_size)
     ciphertext = ""
     for i in reversed(range(len(blocks))):
@@ -131,7 +131,7 @@ def decrypt(ciphertext, block_size, oracle, IV=None, verbose=True):
     return plaintext
 
 
-def __pad(text, block_size):
+def pad(text, block_size):
     """
     Adds PKCS7 padding to the text based on the block size.
 
@@ -151,7 +151,7 @@ def __pad(text, block_size):
     return text + (block_size - len(text) % block_size) * chr(block_size - len(text) % block_size)
 
 
-def __unpad(text):
+def unpad(text):
     """
     Removes PKCS7 padding from the text.
 
@@ -215,6 +215,7 @@ def __get_blocks(plaintext, block_size):
     return blocks
 
 def __print(msg, verbose):
+    # Helper function that prints msg if verbose is true to avoid tons of if statements.
     if not verbose:
         return
     print(msg, flush=True)
