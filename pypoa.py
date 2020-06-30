@@ -18,7 +18,6 @@ def encrypt(plaintext, block_size, oracle, verbose=True):
             str: The ciphertext.
 
         Raises:
-            InvalidBlockSizeError: If the block size does not match the ciphertext.
             PaddingDeterminationError: If the oracle rejects all bytes.
     """
     plaintext = pad(plaintext, block_size)
