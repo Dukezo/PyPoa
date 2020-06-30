@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pypoa",
-    version="1.0",
+    version="1.0.1",
     author="Dukezo",
     author_email="Dukezo@web.de",
     description="A python implementation of the Oracle Padding Attack",
