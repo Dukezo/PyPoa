@@ -89,9 +89,10 @@ def decrypt(ciphertext, block_size, oracle, IV=None, verbose=True):
     if IV != None:
         if len(IV) != block_size * 2:
             raise InvalidBlockSizeError("Initialization vector does not match with the block size.")
-        ciphertext = IV + ciphertext 
+        ciphertext = IV + ciphertext
+    if len(ciphertext) <= block_size * 2:
+        raise ValueError("No initialization vector specified. Either prepend the IV to the ciphertext or use the IV argument.")
     blocks = __get_cipher_blocks(ciphertext, block_size)
-
     plaintext = ""
     for i in range(len(blocks) - 1):
         intermediary_bytes = []
