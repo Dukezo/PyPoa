@@ -130,10 +130,37 @@ def decrypt(ciphertext, block_size, oracle, IV=None, verbose=True):
     __print("[#] Plaintext (HEX): %s" % binascii.hexlify(plaintext.encode("ascii")).decode("ascii"), verbose)
     return plaintext
 
+
 def __pad(text, block_size):
+    """
+    Adds PKCS7 padding to the text based on the block size.
+
+    Args:
+        text (str): The text to be padded.
+        block_size (int): The block size of the cipher.
+
+    Returns:
+        str: The padded text.
+
+    Raises:
+        ValueError: If the block size is not greater than 0.
+    """
+    if block_size < 0:
+        raise ValueError("block_size must be greater than 0.")
+
     return text + (block_size - len(text) % block_size) * chr(block_size - len(text) % block_size)
 
+
 def __unpad(text):
+    """
+    Removes PKCS7 padding from the text.
+
+    Args:
+        text (str): The text to be unpadded.
+
+    Returns:
+        str: The unpadded text.
+    """
     return text[:-ord(text[-1])]
 
 
