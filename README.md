@@ -1,12 +1,7 @@
 
 # PyPoa (Padding Oracle Attack)
 
-A python implementation of the [Padding Oracle Attack](https://en.wikipedia.org/wiki/Padding_oracle_attack).
-
-## Features
-
-* Decrypts and encrypts messages
-* Allows you to implement your own oracle padding validation
+A python module to perform the [Padding Oracle Attack](https://en.wikipedia.org/wiki/Padding_oracle_attack). It can both decrypt and encrypt messages.
 
 ## Installing / Getting started
 
